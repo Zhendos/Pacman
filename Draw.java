@@ -7,20 +7,23 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
-public class Draw extends Applet implements MouseListener, KeyListener{
+public class Draw extends Applet implements MouseListener,  KeyListener{
 	int x, y;
 	
 	int xPacman, yPacman;
 	int xOog, yOog;
 	
+	int xPacmanTotaal;
+	
 	public void init(){
 		setBackground(Color.BLACK);
-		
 		xPacman = 50;
 		yPacman = 50;
 		xOog = 60;
 		yOog = 60;
+		
 		addKeyListener(this);
 		addMouseListener(this);
 		
@@ -32,13 +35,16 @@ public class Draw extends Applet implements MouseListener, KeyListener{
 		g.drawString("Y-coordinate: " + y, 10, 25);
 		
 		this.drawPacman(g);
+		
 	}
 	
 	public void drawPacman(Graphics g){
 		g.setColor(Color.yellow);
-		g.fillOval(xPacman, yPacman, 50, 50);
+		g.fillOval(xPacman, yPacman, 25, 25);
 		g.setColor(Color.white);
-		g.fillOval(xOog, yOog, 10, 10);
+		g.fillOval(xOog, yOog, 5, 5);
+		
+		xPacmanTotaal = 3;
 	}
 
 	@Override
@@ -82,9 +88,9 @@ public class Draw extends Applet implements MouseListener, KeyListener{
 		 * 
 		 */
 		if(ke.getKeyCode() == 39){
-			xPacman ++;
-			xOog ++;
-			
+			xPacman += 3;
+			xOog += 3;
+	
 			repaint();
 		}
 		
@@ -96,8 +102,8 @@ public class Draw extends Applet implements MouseListener, KeyListener{
 		 */
 		
 		if(ke.getKeyCode() == 37){
-			xPacman--;
-			xOog--;
+			xPacman -= 3;
+			xOog -= 3;
 			
 			repaint();
 		}
@@ -108,11 +114,12 @@ public class Draw extends Applet implements MouseListener, KeyListener{
 		 * 
 		 */
 		if(ke.getKeyCode() == 38){
-			yPacman--;
-			yOog--;
+			yPacman -= 3;
+			yOog -= 3;
 			
 			repaint();
 		}
+		
 		/**
 		 * 
 		 * Als de onder pijltjes toets wordt ingeklikt.
@@ -120,22 +127,35 @@ public class Draw extends Applet implements MouseListener, KeyListener{
 		 */
 		
 		if(ke.getKeyCode() == 40){
-			yPacman++;
-			yOog++;
+			yPacman += 3;
+			yOog += 3;
 			
 			repaint();
 		}
+		
 		
 	}
 
 	@Override
 	public void keyReleased(KeyEvent ke) {
-		System.out.println(ke.getKeyCode());
+
 	}
 
 	@Override
 	public void keyTyped(KeyEvent ke) {
+		
+		
+	}
 
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 
