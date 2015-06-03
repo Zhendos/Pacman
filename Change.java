@@ -1,4 +1,6 @@
-package org.bot.pacman.draw;
+package org.pacman.hack;
+
+import org.bot.pacman.draw.Draw;
 
 public class Change {
 	/**
